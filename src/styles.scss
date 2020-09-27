@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@circlon/angular-tree-component/css/angular-tree-component.css';
+@import '~ngx-toastr/toastr.css';
+.mat-checkbox-inner-container {
+    border: 2px Solid #fff !important;
+}
+
+.mat-button-wrapper :focus,
+.mat-icon-button:focus {
+    outline: none !important;
+}
+
+.scrollable {
+    overflow: auto;
+    width: 100%;
+    height: 500px;
+}
+
+#style-1::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #555;
+}

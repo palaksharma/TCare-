@@ -1,0 +1,38 @@
+<div class="sidebar-wrapper">
+  <ul class="nav">
+    <li routerLinkActive="active" *ngFor="let outermenuItem of outermenuItems"
+      class="{{ outermenuItem.class }} nav-item">
+      <p>{{ outermenuItem.title }}</p>
+      <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{ menuItem.class }} nav-item">
+          <a [routerLink]="[menuItem.path]">
+            <i class="tim-icons  {{ menuItem.icon }}"></i>
+            <p>{{ menuItem.title }}</p>
+          </a>
+        </li>
+
+      </ul>
+
+    </li>
+    <li routerLinkActive="active" *ngFor="let reportingOutermenuItem of  ReportingoutermenuItems"
+      class="{{ reportingOutermenuItem.class }} nav-item">
+      <p>{{ reportingOutermenuItem.title }}</p>
+      <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let reportermenuItem  of  ReportingmenuItems"
+          class="{{ reportermenuItem.class }} nav-item">
+          <a [routerLink]="[reportermenuItem.path]">
+            <i class="tim-icons  {{ reportermenuItem.icon }}"></i>
+            <p>{{ reportermenuItem.title }}</p>
+          </a>
+        </li>
+
+      </ul>
+
+    </li>
+
+  </ul>
+
+
+
+
+</div>

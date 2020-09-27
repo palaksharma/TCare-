@@ -1,0 +1,72 @@
+<div class="content">
+    <h3><strong>BEST PRACTICES</strong></h3>
+    <div class="scrollable" id="style-1">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Practice ID</th>
+                    <th scope="col">Component Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Unique Name</th>
+                    <th scope="col">Processed Date</th>
+                    <th scope="col">Job Name</th>
+                    <th scope="col">Component Group</th>
+                    <th scope="col">Status Message</th>
+                    <th scope="col">Status Flag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of bestPractices">
+                    <td>{{data.practise_id}}</td>
+                    <td>{{data.component_name}}</td>
+                    <td>{{data.category}}</td>
+                    <td>{{data.value}}</td>
+                    <td>{{data.unique_name}}</td>
+                    <td>{{data.processed_date}}</td>
+                    <td>{{data.job_name}}</td>
+                    <td>{{data.component_group}}</td>
+                    <td>{{data.Status_Message}}</td>
+                    <td>{{data.StatusFlag}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <br />
+    <div class="container table2">
+        <h3><strong>NAMING CONVENTIONS</strong></h3>
+        <div class="scrollable" id="style-1">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name ID</th>
+                        <th scope="col">Component Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Unique Name</th>
+                        <th scope="col">Processed Date</th>
+                        <th scope="col">Job Name</th>
+                        <th scope="col">Component Group</th>
+                        <th scope="col">Status Message</th>
+                        <th scope="col">Status Flag</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of namingConvention">
+                    <tr>
+                        <td>{{item.name_id}}</td>
+                        <td>{{item.component_name}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.value}}</td>
+                        <td>{{item.unique_name}}</td>
+                        <td>{{item.processed_date}}</td>
+                        <td>{{item.job_name}}</td>
+                        <td>{{item.component_group}}</td>
+                        <td>{{item.Status_Message}}</td>
+                        <td>{{item.StatusFlag}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
