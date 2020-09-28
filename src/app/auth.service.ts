@@ -36,6 +36,9 @@ export class AuthService {
     return this.http.get('/configuration?Project_id='+user1+'&Project_name='+user2+'&Project_desc=testDescription')
   }
 
+  getListofJobsForDropdown(){
+    return this.http.get('/jobList');
+  }
   getListofJobs() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -56,8 +59,8 @@ export class AuthService {
   return this.http.get('/status');
  }
 
- getInputSourceData(){
-  return this.http.get('/talend');
+ getInputSourceData(jobValue){
+  return this.http.get('/talend?Job_name='+jobValue);
  }
 
   logout() {

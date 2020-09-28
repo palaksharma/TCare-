@@ -1,7 +1,14 @@
 <div class="content">
+    <div class="col-sm-12">
+        <select (change)="getListOfJobs($event)" style="height: 35px;border: 2px solid #000;width: 300px;float: right;z-index: 9999;">
+            <option>Select Job Name</option>
+            <option *ngFor="let item of jobList" >{{item.Job_name}}</option>
+          </select>
+    </div>
+
     <h3><strong>SOURCE</strong></h3>
-    <div class="container" style="min-height: 350px;max-height: 350px;overflow-y: scroll;">
-        <div *ngFor="let item of InputData | keyvalue" class="container" style="border: solid;min-height: 230px;max-height: 230px;overflow-y: scroll;">
+    <div class="container" style="min-height: 350px;max-height: 350px; overflow:auto;">
+        <div *ngFor="let item of InputData | keyvalue" style="border: solid;height: auto;">
             <ul><span style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700;">{{item.key}}</span>
                 <li *ngFor="let data of item.value | keyvalue">
                     {{data.value.category}}:{{data.value.VALUE}}</li>
@@ -9,9 +16,12 @@
         </div>
     </div>
     <br>
-    <div class="container" style="min-height: 350px;max-height: 350px;overflow-y: scroll;">
-        <h3><strong>TRANSFORM</strong></h3>
-        <div *ngFor="let item of TransformData | keyvalue" class="container" style="border: solid;min-height: 230px;max-height: 230px;overflow-y: scroll;">
+    <hr>
+    <h3><strong>TRANSFORM</strong></h3>
+    <hr>
+    <div class="container" style="min-height: 350px;max-height: 350px;overflow:auto;">
+
+        <div *ngFor="let item of TransformData | keyvalue" style="border: solid;height: auto;">
             <ul><span style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700;">{{item.key}}</span>
                 <li *ngFor="let data of item.value | keyvalue">
                     {{data.value.category}}:{{data.value.VALUE}}</li>
@@ -19,9 +29,11 @@
         </div>
     </div>
     <br>
-    <div class="container" style="min-height: 350px;max-height: 350px;overflow-y: scroll;">
-        <h3><strong>TARGET</strong></h3>
-        <div *ngFor="let item of OutputData | keyvalue" class="container" style="border: solid;min-height: 230px;max-height: 230px;overflow-y: scroll;">
+    <hr>
+    <h3><strong>TARGET</strong></h3>
+    <hr>
+    <div class="container" style="min-height: 350px;max-height: 350px;overflow:auto; ">
+        <div *ngFor="let item of OutputData | keyvalue" style="border: solid;height: auto;">
             <ul><span style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700;">{{item.key}}</span>
                 <li *ngFor="let data of item.value | keyvalue">
                     {{data.value.category}}:{{data.value.VALUE}}</li>

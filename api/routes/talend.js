@@ -9,11 +9,13 @@ var connection = mysql.createConnection({
     port: '3999'
 });
 router.get('/', (req, res, next) => {
+    let jobNameString = req.query.Job_name;
+    let theString = "'" + jobNameString + "'";
     connection.query(
         `SELECT unique_name, component_group,category,VALUE
         FROM tb_xml_data WHERE
          component_group IN  ('Input','Transformation','Output') AND
-        job_name IN ('NGPP_EFT_CAD_Translate_0.1.','NAGECM001_cSD_D_GSICBSqoopOut_0.1.')  AND category IN ('LABEL','FILENAME','FIELDSEPARATOR','TRIMALL','HOST','PORT','TABLE','QUERY','DBNAME','SQL_QUERY','HIVE_DATABASE_NAME',
+        job_name IN (` + theString + ")" + ` AND category IN ('LABEL','FILENAME','FIELDSEPARATOR','TRIMALL','HOST','PORT','TABLE','QUERY','DBNAME','SQL_QUERY','HIVE_DATABASE_NAME',
         'HIVE_TABLE_NAME','ENCODING','FILE_ACTION','FOLDER','MERGE_PATH','REPLACE_FILE','ADVANCED_COND','CONDITIONS','LOGICAL_OP','REPLICATED_JOIN'
         ,'CLASSPATH_SEPARATOR','CONNECTION','GOOGLE_CLUSTER_ID','GOOGLE_JARS_BUCKET','GOOGLE_PROJECT_ID','GOOGLE_REGION',
         'KEYTAB_PATH','HADOOP_LOGIN','TYPEFILE','DATA_ACTION','JDBC_URL','TABLESCHEMA','TABLE_ACTION','TRIM_CHAR','CODE','COMMIT_EVERY')
@@ -29,7 +31,9 @@ router.get('/', (req, res, next) => {
             }
         }
     );
-})
+});
+
+
 
 
 

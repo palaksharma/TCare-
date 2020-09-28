@@ -19,6 +19,7 @@ const configurationRoutes = require('./api/routes/configuration');
 const jobsRoutes = require('./api/routes/jobs');
 const statusRoutes = require('./api/routes/status');
 const performanceRoutes = require('./api/routes/performance');
+const jobMetaDataRoutes = require('./api/routes/typography');
 const talendRoutes = require('./api/routes/talend');
 const incidentRoutes = require('./api/routes/incident');
 
@@ -48,6 +49,7 @@ app.use('/configuration', configurationRoutes)
 app.use('/status', statusRoutes);
 //Performance End Point
 app.use('/performance', performanceRoutes);
+app.use('/jobList', jobMetaDataRoutes);
 //Jobs End Point 
 app.use('/jobs', jobsRoutes);
 app.use('/talend', talendRoutes);

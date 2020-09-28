@@ -9,9 +9,11 @@ import { groupBy } from 'lodash-es'
 })
 export class TypographyComponent implements OnInit {
   nodes: any = [];
+  jobList: any = [];
   InputData: any = {};
   OutputData: any = {};
   TransformData: any = {};
+  jobValue:any;
   states: any;
   options: ITreeOptions = {
     displayField: 'name',
@@ -50,7 +52,7 @@ export class TypographyComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   getListofData() {
-    this.authService.getInputSourceData().subscribe(event => {
+    this.authService.getInputSourceData(this.jobValue).subscribe(event => {
       // tslint:disable-next-line:no-string-literal
       this.states = groupBy(event['result'], 'unique_name');
       for (const key in this.states) {
@@ -65,7 +67,19 @@ export class TypographyComponent implements OnInit {
       }
     });
   }
+  getListOfJobs(ev){
+    this.jobValue=ev.target.value;
+    this.getListofData();
+  }
+  bindDropdown(){
+    this.authService.getListofJobsForDropdown().subscribe(event => {
+      // tslint:disable-next-line:no-string-literal
+       this.jobList = event['result'];
+       console.log(this.jobList);
+    });
+
+  }
   ngOnInit() {
-    this.getListofData()
+    this.bindDropdown();
   }
 }
