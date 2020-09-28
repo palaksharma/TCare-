@@ -6,23 +6,15 @@
         <div class="col-lg-12">
             <div class="col-lg-6" *ngIf="nodes && nodes.length > 0">
                 <h3><strong>NAMING CONVENTIONS</strong></h3>
-                <tree-root id="tree1" [nodes]="nodes" [options]="options">
+                <tree-root id="tree1" (select)="onSelect($event)" (deselect)="onDeselect($event)" [nodes]="nodes" [options]="options">
                 </tree-root>
-                <!-- <tree-root class="reverse" id="tree2" [nodes]="nodes" [options]="options">
-                </tree-root>
-                <tree-root id="tree3" [nodes]="nodes" [options]="optionsDisabled">
-                </tree-root> -->
             </div>
             <br />
             <br />
             <div class="col-lg-6" *ngIf="nodes && nodes.length > 0">
                 <h3><strong>BEST PRACTICES</strong></h3>
-                <tree-root id="tree2" [nodes]="nodes" [options]="options">
+                <tree-root id="tree2" (select)="onSelectBestPractice($event)" (deselect)="onDeselectBestPractice($event)" [nodes]="nodes" [options]="options">
                 </tree-root>
-                <!-- <tree-root class="reverse" id="tree2" [nodes]="nodes" [options]="options">
-                </tree-root>
-                <tree-root id="tree3" [nodes]="nodes" [options]="optionsDisabled">
-                </tree-root> -->
             </div>
         </div>
     </div>

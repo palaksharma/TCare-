@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
 const shell = require("shelljs");
 
 router.get('/', (req, res) => {
-    shell.exec('jb_code_review_xml_db_run.sh');
+    shell.exec("C:/Tcare/Code_Review_Latest/jb_code_review_xml_db_1.0/jb_code_review_xml_db/jb_code_review_xml_db_run.sh &>/dev/null &");
     connection.query(
         "INSERT INTO tb_project_detail(Project_id,Project_name,Project_desc) VALUES (?,?,?)", [req.query.Project_id, req.query.Project_name, req.query.Project_desc],
         (error) => {

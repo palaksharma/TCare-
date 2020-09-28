@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const checkAuth = require('../middleware/authCheck')
+
+const bodyParser = require("body-parser");
+const app = express();
+var urlencodedParser = bodyParser.urlencoded({ extended: true })
+app.use(bodyParser.json());
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
@@ -11,11 +15,18 @@ var connection = mysql.createConnection({
     port: '3999'
 });
 
-router.get('/', (req, res, next) => {
-    console.log(req.body)
+router.post('/', [bodyParser.json()], (req, res) => {
+    // let bestPractice = req.body.bestPracticeList;
+    let namingConvetion = req.body.namingConvetionList;
+    let theString = "'" + namingConvetion.join("','") + "'";
+    console.log(theString);
+
+    let testString = "SELECT * FROM tb_naming_standard where job_name in ( " + theString + ")";
+    console.log(testString);
+
     connection.query(
-        "SELECT * FROM tb_naming_standard",
-        (error, result, fields) => {
+        "SELECT * FROM tb_naming_standard where job_name in ( " + theString + ")",
+        (error, result) => {
             if (error) {
                 res.status(500).json({ status: 'error' });
             } else {

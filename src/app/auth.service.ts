@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 // import { NG_AUTH_TOKEN } from 'app/common/ng-constants';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,6 +15,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {
   }
+  
 
   /* To generate and get authToken from API endpoints. */
   validateLogin(username: string, password: string) {
@@ -36,19 +37,27 @@ export class AuthService {
   }
 
   getListofJobs() {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
     return this.http.get('/incident');
   }
 
-  getListofBestPractices() {
-    return this.http.get <bestPracticeModel>('/jobs');
+  getListofBestPractices(item1, item2) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<bestPracticeModel>('/jobs', {"namingConvetionList": item1 , "bestPracticeList":item2}, { 'headers': headers });
   }
 
- getListofNamingConvention() {
-  return this.http.get('/performance');
+ getListofNamingConvention( item1, item2) {
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.post('/performance', {"namingConvetionList": item1 , "bestPracticeList":item2}, { 'headers': headers });
  }
 
  getJSONDataofJobs(){
   return this.http.get('/status');
+ }
+
+ getInputSourceData(){
+  return this.http.get('/talend');
  }
 
   logout() {

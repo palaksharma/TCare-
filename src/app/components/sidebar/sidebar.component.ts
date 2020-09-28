@@ -32,7 +32,7 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: "/typography",
-    title: "JSON Data",
+    title: "JOB Meta Data",
     rtlTitle: "قائمة الجدول",
     icon: "icon-puzzle-10",
     class: ""

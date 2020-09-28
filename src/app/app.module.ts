@@ -29,7 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    ToastrModule.forRoot({timeOut: 10000,
+    ToastrModule.forRoot({timeOut: 100,
       positionClass: 'toast-bottom-left',
       preventDuplicates: true
     }
