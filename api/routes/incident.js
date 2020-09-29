@@ -22,7 +22,7 @@ router.get('/', [bodyParser.json()], (req, res) => {
     shell.exec("C:/Tcare/Code_Review_Latest/jb_load_naming_standard_0.1/jb_load_naming_standard/jb_load_naming_standard_run.sh &>/dev/null &");
     shell.exec("C:/Tcare/Code_Review_Latest/jb_load_best_practice_0.1/jb_load_best_practice/jb_load_best_practice_run.sh &>/dev/null &");
     connection.query(
-        "select Job_name FROM tb_job_detail",
+        "select DISTINCT Job_name FROM tb_xml_data",
         (error, result, fields) => {
             if (error) {
                 res.status(500).json({ status: 'error' });
