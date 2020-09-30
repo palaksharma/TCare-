@@ -1,44 +1,100 @@
 <div class="content">
+    <button (click)="exportAsXLSX(InputData)"><i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button>
     <div class="col-sm-12">
         <select (change)="getListOfJobs($event)" style="height: 35px;border: 2px solid #000;width: 300px;float: right;z-index: 9999;">
             <option>Select Job Name</option>
             <option *ngFor="let item of jobList" >{{item.Job_name}}</option>
           </select>
     </div>
-
-    <h3><strong>SOURCE</strong></h3>
-    <div class="container" style="min-height: 350px;max-height: 350px; overflow:auto;">
-        <div *ngFor="let item of InputData | keyvalue" style="border: solid;height: auto;">
-            <ul><span style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700;">{{item.key}}</span>
+    <br />
+    <br />
+    <h3 class="accordion" (click)="toggleAccordian($event,0)"><strong>SOURCE</strong></h3>
+    <div class="container panel" hide="!data[0].isActive">
+        <div *ngFor="let item of InputData | keyvalue; let i=index" style="height: auto;">
+            <span class="accordion" (click)="toggleAccordian2($event,item.key)" style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700; background: none;
+            border: none;">{{item.key}}</span>
+            <ul class="panel" hide="!accordianInputData[item.key]">
                 <li *ngFor="let data of item.value | keyvalue">
                     {{data.value.category}}:{{data.value.VALUE}}</li>
             </ul>
         </div>
     </div>
-    <br>
-    <hr>
-    <h3><strong>TRANSFORM</strong></h3>
-    <hr>
-    <div class="container" style="min-height: 350px;max-height: 350px;overflow:auto;">
-
-        <div *ngFor="let item of TransformData | keyvalue" style="border: solid;height: auto;">
-            <ul><span style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700;">{{item.key}}</span>
+    <br />
+    <h3 class="accordion" (click)="toggleAccordian($event, 1)"><strong>TRANSFORM</strong></h3>
+    <div class="container panel" hide="!data[1].isActive">
+        <div *ngFor="let item of TransformData | keyvalue; let i=index" style="height: auto;">
+            <span class="accordion" (click)="toggleAccordian3($event,item.key)" style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700; background: none;
+            border: none;">{{item.key}}</span>
+            <ul class="panel" hide="!accordianTransformData[item.key]">
                 <li *ngFor="let data of item.value | keyvalue">
                     {{data.value.category}}:{{data.value.VALUE}}</li>
             </ul>
         </div>
     </div>
-    <br>
-    <hr>
-    <h3><strong>TARGET</strong></h3>
-    <hr>
-    <div class="container" style="min-height: 350px;max-height: 350px;overflow:auto; ">
-        <div *ngFor="let item of OutputData | keyvalue" style="border: solid;height: auto;">
-            <ul><span style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700;">{{item.key}}</span>
+    <br />
+    <h3 class="accordion" (click)="toggleAccordian($event, 2)"><strong>TARGET</strong></h3>
+    <div class="container panel" hide="!data[2].isActive">
+        <div *ngFor="let item of OutputData | keyvalue" style="height: auto;">
+            <span class="accordion" (click)="toggleAccordian4($event,item.key)" style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700; background: none;
+            border: none;">{{item.key}}</span>
+            <ul class="panel" hide="!accordianOutputData[item.key]">
                 <li *ngFor="let data of item.value | keyvalue">
                     {{data.value.category}}:{{data.value.VALUE}}</li>
             </ul>
         </div>
+    </div>
+    <br />
+    <h3 class="accordion" (click)="toggleAccordian($event, 3)"><strong>JOB FLOW</strong></h3>
+    <div class="container panel" hide="!data[3].isActive">
+        <table class="table">
+            <thead>
+                <th>Connection Id</th>
+                <th>Project Name</th>
+                <th>Job Name</th>
+                <th>Connection Type</th>
+                <th>Connection Name</th>
+                <th>Source Component</th>
+                <th>Target Component</th>
+            </thead>
+            <tr *ngFor="let item of connectionList">
+                <td>{{item.connection_id}}</td>
+                <td>{{item.project_name}}</td>
+                <td>{{item.job_name}}</td>
+                <td>{{item.connection_type}}</td>
+                <td>{{item.connection_name}}</td>
+                <td>{{item.source_component}}</td>
+                <td>{{item.target_component}}</td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <h3 class="accordion" (click)="toggleAccordian($event, 4)"><strong>CONTEXT PARAMETERS</strong></h3>
+    <div class="container panel" hide="!data[4].isActive" style="overflow: auto;
+    max-height:auto; max-width: 100%;">
+        <select (change)="getChangeValue($event)">
+                <option>Select Parameters</option>
+                <option *ngFor="let item of dataOfContextParameter">{{item}}</option>
+              </select>
+        <table class="table" style="height: auto;">
+            <thead>
+                <th>Connection Id</th>
+                <th>Project Name</th>
+                <th>Job Name</th>
+                <th>Context Environment</th>
+                <th>Context Param Name</th>
+                <th>Context Param Value</th>
+                <th>Context Paraam Type</th>
+            </thead>
+            <tr *ngFor="let item of contextList">
+                <td>{{item.connection_id}}</td>
+                <td>{{item.project_name}}</td>
+                <td>{{item.job_name}}</td>
+                <td>{{item.context_environment}}</td>
+                <td>{{item.context_param_name}}</td>
+                <td>{{item.context_param_value}}</td>
+                <td>{{item.context_param_type}}</td>
+            </tr>
+        </table>
     </div>
 
 </div>

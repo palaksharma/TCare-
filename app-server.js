@@ -22,6 +22,8 @@ const performanceRoutes = require('./api/routes/performance');
 const jobMetaDataRoutes = require('./api/routes/typography');
 const talendRoutes = require('./api/routes/talend');
 const incidentRoutes = require('./api/routes/incident');
+const connectionRoutes = require('./api/routes/jobMetadata');
+const parameterRoutes = require('./api/routes/parameter');
 
 
 app.use(helmet({
@@ -50,10 +52,12 @@ app.use('/status', statusRoutes);
 //Performance End Point
 app.use('/performance', performanceRoutes);
 app.use('/jobList', jobMetaDataRoutes);
+app.use('/parameter', parameterRoutes);
 //Jobs End Point 
 app.use('/jobs', jobsRoutes);
 app.use('/talend', talendRoutes);
 app.use('/incident', incidentRoutes);
+app.use('/connections', connectionRoutes);
 /* To validate login */
 app.post('/validateLogin', bodyParser.json(), (req, res) => {
     const username = req.body.username;

@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-rtl',
-  templateUrl: 'rtl.component.html'
+  templateUrl: 'rtl.component.html',
+  styleUrls:['rtl.component.css']
 })
 export class RtlComponent implements OnInit {
 

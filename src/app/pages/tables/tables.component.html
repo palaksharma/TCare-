@@ -1,18 +1,19 @@
 <div class="content">
+    <h3><strong>CODE LIBRARY</strong></h3>
     <button style="float:right; z-index: 999;" type="button" (click)="navigateToRTL()" class="btn btn-default">
         Proceed
     </button>
     <div class="container-fluid">
         <div class="col-lg-12">
+            <h4><strong>Select Jobs for Naming Convention Check</strong></h4>
             <div class="col-lg-6" *ngIf="nodes && nodes.length > 0">
-                <h3><strong>NAMING CONVENTIONS</strong></h3>
                 <tree-root id="tree1" (select)="onSelect($event)" (deselect)="onDeselect($event)" [nodes]="nodes" [options]="options">
                 </tree-root>
             </div>
             <br />
             <br />
+            <h4><strong>Select Jobs for Best Practices Check </strong></h4>
             <div class="col-lg-6" *ngIf="nodes && nodes.length > 0">
-                <h3><strong>BEST PRACTICES</strong></h3>
                 <tree-root id="tree2" (select)="onSelectBestPractice($event)" (deselect)="onDeselectBestPractice($event)" [nodes]="nodes" [options]="options">
                 </tree-root>
             </div>

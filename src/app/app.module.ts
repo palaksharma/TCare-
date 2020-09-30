@@ -22,6 +22,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { TreeModule } from '@circlon/angular-tree-component';
 import { AuthService } from '../app/auth.service';
 import { ToastrModule } from 'ngx-toastr';
+import { ExcelService} from '../app/excel.service';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    ToastrModule.forRoot({timeOut: 100,
+    ToastrModule.forRoot({timeOut: 1000,
       positionClass: 'toast-bottom-left',
       preventDuplicates: true
     }
@@ -48,7 +49,7 @@ import { ToastrModule } from 'ngx-toastr';
     TreeModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
-  providers: [IncidentService, AuthService],
+  providers: [IncidentService, AuthService,ExcelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

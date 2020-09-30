@@ -21,29 +21,31 @@ export const ROUTES: RouteInfo[] = [
     rtlTitle: "خرائط",
     icon: "icon-pin",
     class: "" },
-  
-  {
-    path: "/notifications",
-    title: "Rule Settings",
-    rtlTitle: "إخطارات",
-    icon: "icon-bell-55",
-    class: ""
-  },
 
-  {
-    path: "/typography",
-    title: "JOB Meta Data",
-    rtlTitle: "قائمة الجدول",
-    icon: "icon-puzzle-10",
-    class: ""
-  },
-  {
-    path: "/tables",
-    title: "Talend Components",
-    rtlTitle: "قائمة الجدول",
-    icon: "icon-puzzle-10",
-    class: ""
-  }
+    {
+      path: "/typography",
+      title: "JOB Meta Data",
+      rtlTitle: "قائمة الجدول",
+      icon: "icon-puzzle-10",
+      class: ""
+    },
+  
+  // {
+  //   path: "/notifications",
+  //   title: "Rule Settings",
+  //   rtlTitle: "إخطارات",
+  //   icon: "icon-bell-55",
+  //   class: ""
+  // },
+
+  
+  // {
+  //   path: "/tables",
+  //   title: "Talend Components",
+  //   rtlTitle: "قائمة الجدول",
+  //   icon: "icon-puzzle-10",
+  //   class: ""
+  // }
   
 ];
 export const ReportingROUTES: RouteInfo[] = [

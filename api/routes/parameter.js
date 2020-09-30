@@ -1,14 +1,12 @@
 const express = require('express');
-
 const router = express.Router();
 const shell = require("shelljs");
-var mysql = require('mysql');
-
 const bodyParser = require("body-parser");
 const app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: true })
 app.use(bodyParser.json());
 
+var mysql = require('mysql');
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'pentaho',
@@ -16,19 +14,19 @@ var connection = mysql.createConnection({
     database: 'tmaster',
     port: '3999'
 });
-var fs = require('fs');
 
-router.get('/', [bodyParser.json()], (req, res) => {
+router.post('/', [bodyParser.json()], (req, res) => {
+    let contextEnvironment = req.body.parameterValue;
+    console.log("ab", contextEnvironment);
     connection.query(
-        "select DISTINCT job_name FROM tb_xml_data",
-        (error, result, fields) => {
+        "SELECT * FROM tb_xml_context where job_name in ( '" + contextEnvironment + "' )",
+        (error, result) => {
             if (error) {
-                res.status(500).json({ status: 'error' });
+                res.status(500).json({ error });
             } else {
                 res.status(200).json({ result });
 
             }
-
         });
 });
 

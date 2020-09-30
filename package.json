@@ -88,6 +88,7 @@
         "chart.js": "2.8.0",
         "cookie-parser": "^1.4.4",
         "core-js": "2.6.5",
+        "file-saver": "^2.0.2",
         "fs": "0.0.1-security",
         "helmet": "^3.21.2",
         "hsts": "^2.2.0",

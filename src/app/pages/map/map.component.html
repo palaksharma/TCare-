@@ -1,3 +1,7 @@
+<div id="preloader" *ngIf="spinner">
+    <div id="loader"></div>
+</div>
+
 <div class="content">
     <div toastContainer></div>
     <h2><strong>PROJECT DETAILS</strong></h2>
@@ -27,7 +31,7 @@
       <option>5.6.4</option>
     </select>
         </div> -->
-        <p>Select Project File: <input type="file" placeholder="Choose File" class="btn btn-default" (change)="upload($event)" /></p>
+        <p>Select Project File: <input type="file" id="fileInput" placeholder="Choose File" class="btn btn-default" (change)="upload($event)" /></p>
         <div>
             Upload Percent: {{percentDone}}% <br />
 

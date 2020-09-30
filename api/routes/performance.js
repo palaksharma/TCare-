@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const shell = require("shelljs");
 const bodyParser = require("body-parser");
 const app = express();
 var urlencodedParser = bodyParser.urlencoded({ extended: true })
@@ -16,6 +16,8 @@ var connection = mysql.createConnection({
 });
 
 router.post('/', [bodyParser.json()], (req, res) => {
+    shell.exec("C:/Tcare/Code_Review_Latest/jb_load_naming_standard_0.1/jb_load_naming_standard/jb_load_naming_standard_run.sh &>/dev/null &");
+    shell.exec("C:/Tcare/Code_Review_Latest/jb_load_best_practice_0.1/jb_load_best_practice/jb_load_best_practice_run.sh &>/dev/null &");
     // let bestPractice = req.body.bestPracticeList;
     let namingConvetion = req.body.namingConvetionList;
     let theString = "'" + namingConvetion.join("','") + "'";

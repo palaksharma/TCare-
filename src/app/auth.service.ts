@@ -33,7 +33,7 @@ export class AuthService {
       Project_name: user2,
       Project_desc: user3
     }
-    return this.http.get('/configuration?Project_id='+user1+'&Project_name='+user2+'&Project_desc=testDescription')
+    return this.http.get('/configuration?Project_id='+user1+'&Project_name='+user2+'&Project_desc='+user3)
   }
 
   getListofJobsForDropdown(){
@@ -55,8 +55,19 @@ export class AuthService {
   return this.http.post('/performance', {"namingConvetionList": item1 , "bestPracticeList":item2}, { 'headers': headers });
  }
 
+ getListofContextParameter(item1){
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.post('/parameter', {"parameterValue": item1 }, { 'headers': headers });
+ }
+
  getJSONDataofJobs(){
   return this.http.get('/status');
+ }
+
+ getListofConnections(item1){
+   console.log(item1);
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.post('/connections', {"job_name": item1 }, { 'headers': headers });
  }
 
  getInputSourceData(jobValue){

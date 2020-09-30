@@ -20,7 +20,7 @@ export class TreeChecklistExample implements OnInit {
   }
   nodes: any = [];
   options: ITreeOptions = {
-    displayField: 'Job_name',
+    displayField: 'job_name',
     useCheckbox: true,
   };
 
@@ -37,32 +37,32 @@ export class TreeChecklistExample implements OnInit {
   selectedTreeList1: any = [];
  
   onSelect(ev){
-    if(!this.selectedTreeList.includes(ev.node.data.Job_name))
+    if(!this.selectedTreeList.includes(ev.node.data.job_name))
     {
-      this.selectedTreeList.push(ev.node.data.Job_name);
+      this.selectedTreeList.push(ev.node.data.job_name);
     }
     console.log(this.selectedTreeList);
   }
    
   onDeselect(ev){
-    if(this.selectedTreeList.includes(ev.node.data.Job_name))
+    if(this.selectedTreeList.includes(ev.node.data.job_name))
     {
-      this.selectedTreeList = this.selectedTreeList.filter(item => item !== ev.node.data.Job_name);
+      this.selectedTreeList = this.selectedTreeList.filter(item => item !== ev.node.data.job_name);
     }
     console.log(this.selectedTreeList);
   }
   onSelectBestPractice(ev){
-    if(!this.selectedTreeList1.includes(ev.node.data.Job_name))
+    if(!this.selectedTreeList1.includes(ev.node.data.job_name))
     {
-      this.selectedTreeList1.push(ev.node.data.Job_name);
+      this.selectedTreeList1.push(ev.node.data.job_name);
     }
     console.log(this.selectedTreeList1);
   }
    
   onDeselectBestPractice(ev){
-    if(this.selectedTreeList1.includes(ev.node.data.Job_name))
+    if(this.selectedTreeList1.includes(ev.node.data.job_name))
     {
-      this.selectedTreeList1 = this.selectedTreeList1.filter(item => item !== ev.node.data.Job_name);
+      this.selectedTreeList1 = this.selectedTreeList1.filter(item => item !== ev.node.data.job_name);
     }
     console.log(this.selectedTreeList1);
   }
