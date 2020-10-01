@@ -1,5 +1,7 @@
 <div class="content">
-    <button (click)="exportAsXLSX(InputData)"><i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button>
+    <span>Click here to download data:<button (click)="exportAsXLSX(InputData)"><i class="fa fa-file-excel-o" style="font-size:30px;"></i></button></span>
+    <br /><br />
+    <span>Click here to download data:<button (click)="downloadFile()"><i class="fa fa-file-excel-o" style="font-size:30px;"></i></button></span>
     <div class="col-sm-12">
         <select (change)="getListOfJobs($event)" style="height: 35px;border: 2px solid #000;width: 300px;float: right;z-index: 9999;">
             <option>Select Job Name</option>

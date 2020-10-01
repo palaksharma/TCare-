@@ -55,9 +55,9 @@ export class AuthService {
   return this.http.post('/performance', {"namingConvetionList": item1 , "bestPracticeList":item2}, { 'headers': headers });
  }
 
- getListofContextParameter(item1){
+ getListofContextParameter(item1 , item2){
   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  return this.http.post('/parameter', {"parameterValue": item1 }, { 'headers': headers });
+  return this.http.post('/parameter', {"parameterValue": item1 , "context_Env_Parameter": item2 }, { 'headers': headers });
  }
 
  getJSONDataofJobs(){

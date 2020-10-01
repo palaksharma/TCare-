@@ -106,12 +106,19 @@ export class TypographyComponent implements OnInit {
   }
 
   showListofContextParameters(){
-    this.authService.getListofContextParameter(this.jobValue).subscribe(event => {
+    this.authService.getListofContextParameter(this.jobValue,this.parameterSelected ).subscribe(event => {
       // tslint:disable-next-line:no-string-literal
        this.contextList = event['result'];
        console.log(this.contextList);
     });
   }
+
+  downloadFile(){
+    let link = document.createElement("a");
+    link.download = "master_file";
+    link.href = "../../../assets/master_file.xlsx";
+    link.click();
+}
 
   bindDropdown(){
     this.authService.getListofJobsForDropdown().subscribe(event => {

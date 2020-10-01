@@ -16,10 +16,11 @@ var connection = mysql.createConnection({
 });
 
 router.post('/', [bodyParser.json()], (req, res) => {
-    let contextEnvironment = req.body.parameterValue;
-    console.log("ab", contextEnvironment);
+    let job_name = req.body.parameterValue;
+    let context_environment = [req.body.context_Env_Parameter]
+    console.log("ab", context_environment);
     connection.query(
-        "SELECT * FROM tb_xml_context where job_name in ( '" + contextEnvironment + "' )",
+        "SELECT * FROM tb_xml_context where job_name in ( '" + job_name + "') AND context_environment in ('" + context_environment + "' )",
         (error, result) => {
             if (error) {
                 res.status(500).json({ error });
