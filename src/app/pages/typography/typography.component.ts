@@ -97,6 +97,9 @@ export class TypographyComponent implements OnInit {
   }
   getListOfJobs(ev){
     this.jobValue=ev.target.value;
+    this.InputData={};
+    this.OutputData={};
+    this.TransformData={};
     this.getListofData();
   }
 

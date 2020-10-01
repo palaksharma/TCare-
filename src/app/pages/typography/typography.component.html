@@ -1,7 +1,7 @@
 <div class="content">
-    <span>Click here to download data:<button (click)="exportAsXLSX(InputData)"><i class="fa fa-file-excel-o" style="font-size:30px;"></i></button></span>
+    <span class="spnCls">Download High Level Parsed Data:<button (click)="exportAsXLSX(InputData)" style="background: none;border: 0;" ><i class="fa fa-download" style="font-size:25px; background: none;"></i></button></span>
     <br /><br />
-    <span>Click here to download data:<button (click)="downloadFile()"><i class="fa fa-file-excel-o" style="font-size:30px;"></i></button></span>
+    <span class="spnCls">Download Detailed Parsed Data:<button (click)="downloadFile()" style="background: none;border: 0;"><i class="fa fa-download" aria-hidden="true" style="font-size:25px; background: none;"></i></button></span>
     <div class="col-sm-12">
         <select (change)="getListOfJobs($event)" style="height: 35px;border: 2px solid #000;width: 300px;float: right;z-index: 9999;">
             <option>Select Job Name</option>
@@ -11,7 +11,7 @@
     <br />
     <br />
     <h3 class="accordion" (click)="toggleAccordian($event,0)"><strong>SOURCE</strong></h3>
-    <div class="container panel" hide="!data[0].isActive">
+    <div *ngIf="InputData != {}" class="container panel" style="overflow: scroll;" hide="!data[0].isActive">
         <div *ngFor="let item of InputData | keyvalue; let i=index" style="height: auto;">
             <span class="accordion" (click)="toggleAccordian2($event,item.key)" style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700; background: none;
             border: none;">{{item.key}}</span>
@@ -23,7 +23,7 @@
     </div>
     <br />
     <h3 class="accordion" (click)="toggleAccordian($event, 1)"><strong>TRANSFORM</strong></h3>
-    <div class="container panel" hide="!data[1].isActive">
+    <div *ngIf="TransformData != {}" class="container panel" style="overflow: scroll;" hide="!data[1].isActive">
         <div *ngFor="let item of TransformData | keyvalue; let i=index" style="height: auto;">
             <span class="accordion" (click)="toggleAccordian3($event,item.key)" style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700; background: none;
             border: none;">{{item.key}}</span>
@@ -35,8 +35,8 @@
     </div>
     <br />
     <h3 class="accordion" (click)="toggleAccordian($event, 2)"><strong>TARGET</strong></h3>
-    <div class="container panel" hide="!data[2].isActive">
-        <div *ngFor="let item of OutputData | keyvalue" style="height: auto;">
+    <div *ngIf="OutputData != {}" class="container panel" hide="!data[2].isActive">
+        <div *ngFor="let item of OutputData | keyvalue">
             <span class="accordion" (click)="toggleAccordian4($event,item.key)" style="color: #1d253b;font-size: 25px;margin-left: -29px;font-weight: 700; background: none;
             border: none;">{{item.key}}</span>
             <ul class="panel" hide="!accordianOutputData[item.key]">
@@ -70,14 +70,13 @@
         </table>
     </div>
     <br />
+    <select style="height: 35px;border: 2px solid #000;width: 300px;z-index: 9999;" (change)="getChangeValue($event)">
+        <option>Select Parameters</option>
+        <option *ngFor="let item of dataOfContextParameter">{{item}}</option>
+      </select>
     <h3 class="accordion" (click)="toggleAccordian($event, 4)"><strong>CONTEXT PARAMETERS</strong></h3>
-    <div class="container panel" hide="!data[4].isActive" style="overflow: auto;
-    max-height:auto; max-width: 100%;">
-        <select (change)="getChangeValue($event)">
-                <option>Select Parameters</option>
-                <option *ngFor="let item of dataOfContextParameter">{{item}}</option>
-              </select>
-        <table class="table" style="height: auto;">
+    <div class="container panel" style="overflow:scroll; max-width:100%;" hide="!data[4].isActive">
+        <table class="table">
             <thead>
                 <th>Connection Id</th>
                 <th>Project Name</th>
